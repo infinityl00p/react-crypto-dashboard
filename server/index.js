@@ -34,43 +34,35 @@ app.get('/api/exchangerate', (req, res) => {
   }
 });
 
-// const getAllCoinsInUSD = () => {
-//   const cryptoCoins = ['BTC', 'ETH'];
-//   const cryptoCurrencyValues = [];
+const getAllCoinsInUSD = () => {
+  const cryptoCoins = ['BTC', 'ETH', 'XRB', 'BCH', 'LTC', 'EOS'];
+  const cryptoCurrencyValues = [];
 
-//   cryptoCoins.forEach((coin) => {
-//     axios.get(`https://rest.coinapi.io/v1/exchangerate/${coin}/USD?apikey=${keys.coinApi}`)
-//     .then((response) => {
-//       console.log(response.data);
-//       cryptoCurrencyValues.push(response.data);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     })
-//   });
+  cryptoCoins.forEach((coin) => {
+    axios.get(`https://rest.coinapi.io/v1/exchangerate/${coin}/USD?apikey=${keys.coinApi}`)
+    .then((response) => {
+      const base = response.data.asset_id_base;
+      const quote = response.data.asset_id_quote;
+      const rate = response.data.rate;
+      const time = response.data.time;
 
-//   console.log(cryptoCurrencyValues);
-// }
+
+      const queryString = `INSERT INTO exchange_rates (base, quote, rate, time) VALUES (?, ?, ?, ?)`;
+
+      dbCon.connect((error) => {
+        dbCon.query(queryString, [base, quote, rate, time], function (err, result) {
+          console.log({result});
+        });
+      });
+
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  });
+}
 
 // getAllCoinsInUSD();
-
-// [0] { time: '2018-09-13T14:57:46.5712577Z',
-// [0]   asset_id_base: 'ETH',
-// [0]   asset_id_quote: 'USD',
-// [0]   rate: 202.64736524900775 }
-// [0] { time: '2018-09-13T14:57:48.9619488Z',
-// [0]   asset_id_base: 'BTC',
-// [0]   asset_id_quote: 'USD',
-// [0]   rate: 6522.570752358936 }
-
-/*
-Exchange Rate Table
-  id
-  base
-  quote
-  rate
-  time
-*/
 
 app.listen(port, () => {
   console.log(`Server started at port: ${port}`);
