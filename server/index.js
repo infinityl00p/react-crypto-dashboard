@@ -1,12 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const keys = require('./api_keys');
+const axios = require('axios');
+const dbCon = require('./db_config').dbCon;
 
 const app = express();
 
 
 let port = 5000 || process.env.PORT
+
+dbCon.connect((error) => {
+  if (error) throw err;
+  console.log("Database Connected!");
+  dbCon.query('SELECT * FROM exchange_rates', function (err, result) {
+    if (err) throw err;
+    console.log(result[0]);
+  });
+});
 
 // Get the exchange rate between a real currency and a cryptocurrency
 app.get('/api/exchangerate', (req, res) => {
@@ -52,6 +62,15 @@ app.get('/api/exchangerate', (req, res) => {
 // [0]   asset_id_base: 'BTC',
 // [0]   asset_id_quote: 'USD',
 // [0]   rate: 6522.570752358936 }
+
+/*
+Exchange Rate Table
+  id
+  base
+  quote
+  rate
+  time
+*/
 
 app.listen(port, () => {
   console.log(`Server started at port: ${port}`);
