@@ -10,8 +10,8 @@
 /build
 
 # private info
-/server/api_keys.js
-/server/db_config.js
+/server/config/api_keys.js
+/server/config/db_config.js
 
 # misc
 .DS_Store

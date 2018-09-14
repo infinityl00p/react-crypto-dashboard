@@ -1,22 +1,25 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const keys = require('./api_keys');
+const keys = require('./config/api_keys');
 const axios = require('axios');
-const dbCon = require('./db_config').dbCon;
+const dbCon = require('./config/db_config').dbCon;
+require('./services');
+require('./routes');
 
 const app = express();
 
-
-let port = 5000 || process.env.PORT
+let port = 5000 || process.env.PORT;
 
 dbCon.connect((error) => {
   if (error) throw err;
-  console.log("Database Connected!");
-  dbCon.query('SELECT * FROM exchange_rates', function (err, result) {
-    if (err) throw err;
-    console.log(result[0]);
-  });
 });
+
+app.get('/api/coins', (req, res) => {
+  dbCon.query('SELECT * FROM coins', function (error, result) {
+    if (error) throw error;
+    res.send(result);
+  });
+})
 
 // Get the exchange rate between a real currency and a cryptocurrency
 app.get('/api/exchangerate', (req, res) => {
@@ -24,7 +27,7 @@ app.get('/api/exchangerate', (req, res) => {
   const currency = req.query.currency;
 
   if (crypto && currency) {
-  axios.get(`https://rest.coinapi.io/v1/exchangerate/${crypto}/${currency}?apikey=${keys.coinApi}`)
+  axios.get(`https://rest.coinapi.io/v1/exchangerate/${crypto}/${currency}?apikey=${keys.coin_api}`)
     .then((response) => {
       res.send(response.data);
     })
@@ -34,35 +37,32 @@ app.get('/api/exchangerate', (req, res) => {
   }
 });
 
-const getAllCoinsInUSD = () => {
-  const cryptoCoins = ['BTC', 'ETH', 'XRB', 'BCH', 'LTC', 'EOS'];
-  const cryptoCurrencyValues = [];
+app.get('/api/coins/historical', (req, res) => {
+  var yesterday = new Date();
+  yesterday.setDate(yesterday.getDate()-1);
+  yesterday = yesterday.toISOString();
 
-  cryptoCoins.forEach((coin) => {
-    axios.get(`https://rest.coinapi.io/v1/exchangerate/${coin}/USD?apikey=${keys.coinApi}`)
+  axios.get(`https://rest.coinapi.io/v1/exchangerate/BTC/USD?time=${yesterday}&apikey=${keys.coin_api}`)
     .then((response) => {
-      const base = response.data.asset_id_base;
-      const quote = response.data.asset_id_quote;
-      const rate = response.data.rate;
-      const time = response.data.time;
-
-
-      const queryString = `INSERT INTO exchange_rates (base, quote, rate, time) VALUES (?, ?, ?, ?)`;
-
-      dbCon.connect((error) => {
-        dbCon.query(queryString, [base, quote, rate, time], function (err, result) {
-          console.log({result});
-        });
-      });
-
+      return res.send(response.data);
     })
     .catch((error) => {
-      console.log(error);
+      //console.log(error);
     })
-  });
-}
+});
 
-// getAllCoinsInUSD();
+var starttime = new Date();
+// Get the iso time (GMT 0 == UTC 0)
+var isotime = new Date((new Date(starttime)).toISOString() );
+// getTime() is the unix time value, in milliseconds.
+// getTimezoneOffset() is UTC time and local time in minutes.
+// 60000 = 60*1000 converts getTimezoneOffset() from minutes to milliseconds.
+var fixedtime = new Date(isotime.getTime()-(starttime.getTimezoneOffset()*60000));
+// toISOString() is always 24 characters long: YYYY-MM-DDTHH:mm:ss.sssZ.
+// .slice(0, 19) removes the last 5 chars, ".sssZ",which is (UTC offset).
+// .replace('T', ' ') removes the pad between the date and time.
+var formatedMysqlString = fixedtime.toISOString().slice(0, 19).replace('T', ' ');
+console.log( formatedMysqlString );
 
 app.listen(port, () => {
   console.log(`Server started at port: ${port}`);
