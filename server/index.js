@@ -3,12 +3,15 @@ const bodyParser = require('body-parser');
 const keys = require('./config/api_keys');
 const axios = require('axios');
 const dbCon = require('./config/db_config').dbCon;
+const cors = require('cors');
 require('./services');
 require('./routes');
 
 const app = express();
 
 let port = 5000 || process.env.PORT;
+
+app.use(cors());
 
 dbCon.connect((error) => {
   if (error) throw err;
