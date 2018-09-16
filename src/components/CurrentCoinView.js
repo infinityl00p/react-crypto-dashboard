@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import BCH from '../node_modules/cryptocurrency-icons/svg/white/bch.svg';
-import BTC from '../node_modules/cryptocurrency-icons/svg/white/btc.svg';
-import DAS from '../node_modules/cryptocurrency-icons/svg/white/dash.svg';
-import ETH from '../node_modules/cryptocurrency-icons/svg/white/eth.svg';
-import LTC from '../node_modules/cryptocurrency-icons/svg/white/ltc.svg';
-import XRP from '../node_modules/cryptocurrency-icons/svg/white/xrp.svg';
-import './CurrentCoinView.css';
+import BCH from '../../node_modules/cryptocurrency-icons/svg/white/bch.svg';
+import BTC from '../../node_modules/cryptocurrency-icons/svg/white/btc.svg';
+import DAS from '../../node_modules/cryptocurrency-icons/svg/white/dash.svg';
+import ETH from '../../node_modules/cryptocurrency-icons/svg/white/eth.svg';
+import LTC from '../../node_modules/cryptocurrency-icons/svg/white/ltc.svg';
+import XRP from '../../node_modules/cryptocurrency-icons/svg/white/xrp.svg';
+import '../assets/css/CurrentCoinView.css';
 
 class CurrentCoinView extends Component {
   constructor() {

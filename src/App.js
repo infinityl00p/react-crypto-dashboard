@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-import Sidebar from './Sidebar';
-import CurrentCoinView from './CurrentCoinView';
+import './assets/css/App.css';
+import Sidebar from './components/Sidebar';
+import CurrentCoinView from './components/CurrentCoinView';
 
 class App extends Component {
   render() {

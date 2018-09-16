@@ -2,7 +2,7 @@ aside {
   position: relative;
   display: inline-block;
   float: left;
-  background-image: url('./assets/img/sidebar-image.jpg');
+  background-image: url('../img/sidebar-image.jpg');
   background-position: center;
   height: 100%;
   width: 24rem;
