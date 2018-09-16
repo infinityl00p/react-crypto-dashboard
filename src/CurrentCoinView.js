@@ -28,6 +28,9 @@ class CurrentCoinView extends Component {
     if (mostRecentCoins) {
       return mostRecentCoins.map((coin, i) => {
         const iconContainerClass = `${coin.base} icon-container`;
+        const percentageChange = this.getPercentageChange(coin, yesterdaysCoins);
+        const percentageClass = `price-change price-change--right ${percentageChange.integerType}`
+
 
         return (
           <div key={i} className="coin-container">
@@ -41,7 +44,7 @@ class CurrentCoinView extends Component {
               </div>
               <div className="price-change-container">
                 <p className="price-change price-change--left">24 Hour Change</p>
-                <p className="price-change price-change--right">{this.getPercentageChange(coin, yesterdaysCoins)}</p>
+                <p className={percentageClass}>{percentageChange.percentage}%</p>
               </div>
             </div>
           </div>
@@ -75,24 +78,51 @@ class CurrentCoinView extends Component {
   }
 
   getPercentageChange = (coin, yesterdaysCoins) => {
-    //I only want to loop through the array up until I find the correct value then break
-    yesterdaysCoins.array.forEach(element => {
+    let percentage;
 
-    });
-    //return a single number and postive or negative
+    for (let i = 0; i < yesterdaysCoins.length; i++) {
+      if (yesterdaysCoins[i].base === coin.base) {
+        if (coin.rate > yesterdaysCoins[i].rate) {
+          percentage = ((coin.rate / yesterdaysCoins[i].rate) - 1).toFixed(5);
+          break;
+        } else if (yesterdaysCoins[i].rate > coin.rate) {
+          percentage = (-(yesterdaysCoins[i].rate / coin.rate) - 1).toFixed(5);
+          break;
+        } else {
+          percentage = 0;
+          break;
+        }
+      }
+    }
+
+    const percentageString = percentage.toString();
+
+    if (percentageString.length === 1) {
+      return { percentage, integerType: 'neutral' }
+    } else if (percentageString.charAt(0) === '-') {
+      return { percentage, integerType: 'negative' }
+    } else {
+      return { percentage, integerType: 'positive' }
+    }
   }
 
   //The last 6 items of the array will always be the most recent
-  //FIXME: in the future, this may need to be updated
   getMostRecentCoins = (numRecent) => {
     const mostRecentCoins = [];
     if (this.state.coins.length) {
-      for (var i = this.state.coins.length - numRecent; i < this.state.coins.length; i++) {
-        mostRecentCoins.push(this.state.coins[i]);
-      }
-    } else { return; }
+      const sortedByTime = this.state.coins.sort((a, b) => {
+        a = new Date(a.time);
+        b = new Date(b.time);
 
-    return mostRecentCoins;
+        return a>b ? -1 : a<b ? 1 : 0;
+      });
+
+      for (var i = 0; i < numRecent; i++) {
+        mostRecentCoins.push(sortedByTime[i]);
+      }
+
+      return mostRecentCoins;
+    } else { return; }
   }
 
   getYesterdaysCoins = () => {
