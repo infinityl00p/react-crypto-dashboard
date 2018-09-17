@@ -1,4 +1,4 @@
-.coin-card .card-icon {
+.card .card-icon {
   float: left;
   padding: 1.5rem;
   margin-top: -2rem;
@@ -6,39 +6,51 @@
   border-radius: 3px;
 }
 
-.coin-card .card-icon img {
+.card .card-icon img {
   width: 6rem;
   height: 6rem;
   object-fit: contain;
   position: center;
 }
 
-.coin-card .card-icon.BTC {
+.card .card-icon.BTC {
   background: linear-gradient(60deg, #f7931a, #fb8c00);
   box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
 }
 
-.coin-card .card-icon.BCH {
+.card .card-icon.BCH {
   background: linear-gradient(60deg, #F59332,  rgb(255, 152, 49));
   box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
 }
 
-.coin-card .card-icon.XRP {
+.card .card-icon.XRP {
   background: linear-gradient(60deg, #00AAE4, #00AAE4);
   box-shadow: 0 12px 20px -10px rgba(0, 171, 228, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 171, 228, 0.2);
 }
 
-.coin-card .card-icon.DAS {
+.card .card-icon.DAS {
   background: linear-gradient(60deg, #012060, #012469);
   box-shadow: 0 12px 20px -10px rgba(1, 32, 96, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(1, 32, 96, 0.2);
 }
 
-.coin-card .card-icon.ETH {
+.card .card-icon.ETH {
   background: linear-gradient(60deg, #3C3C3D, #12100B);
   box-shadow: 0 12px 20px -10px rgba(60, 60, 61, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(60, 60, 61, 0.2);
 }
 
-.coin-card .card-icon.LTC {
+.card .card-icon.LTC {
   background: linear-gradient(60deg, #b8b8b8, #c0c0c0);
   box-shadow: 0 12px 20px -10px rgba(184, 184, 184, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(184, 184, 184, 0.2);
+}
+
+.card .card-icon {
+  background: linear-gradient(60deg, #3C3C3D, #12100B);
+  box-shadow: 0 12px 20px -10px rgba(60, 60, 61, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(60, 60, 61, 0.2);
+}
+
+.card .card-icon .icon--number {
+  color: #fff;
+  font-weight: 100;
+  font-size: 2rem;
+  padding: 0 1rem;
 }

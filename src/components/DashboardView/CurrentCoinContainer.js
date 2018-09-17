@@ -66,9 +66,7 @@ class CurrentCoinContainer extends Component {
 
     return (
       <Card>
-        <CardIcon
-          iconClass={this.props.coin.base}
-        >
+        <CardIcon iconClass={this.props.coin.base}>
           <img src={this.getImageSrc(this.props.coin.base)} alt={this.props.coin.base} />
         </CardIcon>
         <div className="text-container">

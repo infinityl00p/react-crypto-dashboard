@@ -7,7 +7,23 @@ import ConversionView from './DashboardView/ConversionView';
 import '../assets/css/App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+
+    const activeComponent = this.getActiveComponent();
+
+    this.state = { activeComponent }
+  }
   state = { activeComponent: 'Current Rates'}
+
+  getActiveComponent = () => {
+    switch(window.location.pathname) {
+      case '/': return 'Current Rates';
+      case '/hindsight': return 'Hindsight Tool';
+      case '/conversion': return 'Currency Conversion';
+      default: return 'Current Rates';
+    }
+  }
 
   updateActiveComponent = (component) => {
     if (component !== this.state.activeComponent) {

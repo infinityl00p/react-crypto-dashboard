@@ -1,4 +1,4 @@
-.coin-container {
+.card-container {
   position: relative;
   padding: 0 1.5rem;
   flex-grow: 0;
@@ -6,7 +6,7 @@
   flex-basis: 33.33333%;
 }
 
-.coin-card {
+.card {
   position: relative;
   display: inline-block;
   margin: 3rem 0;
@@ -19,14 +19,14 @@
 }
 
 @media only screen and  (max-width: 1160px) {
-  .coin-container {
+  .card-container {
     max-width: 50%;
     flex-basis: 50%;
   }
 }
 
 @media only screen and  (max-width: 600px) {
-  .coin-container {
+  .card-container {
     max-width: 100%;
     flex-basis: 100%;
   }

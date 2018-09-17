@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import '../../assets/css/CryptoCard.css';
+import '../../assets/css/Card.css';
 
 class CryptoCard extends Component {
   render() {
     return (
-      <div className="coin-container">
-        <div className="coin-card">
+      <div className="card-container">
+        <div className="card">
           {this.props.children}
         </div>
       </div>
