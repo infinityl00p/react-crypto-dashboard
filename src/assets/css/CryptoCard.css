@@ -17,3 +17,17 @@
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
   text-align: right;
 }
+
+@media only screen and  (max-width: 1160px) {
+  .coin-container {
+    max-width: 50%;
+    flex-basis: 50%;
+  }
+}
+
+@media only screen and  (max-width: 600px) {
+  .coin-container {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}

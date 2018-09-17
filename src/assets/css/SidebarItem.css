@@ -4,6 +4,7 @@
 
 .sidebar-item a {
   color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
   margin: 1rem 1.5rem 0;
   padding: 1rem;
   display: block;

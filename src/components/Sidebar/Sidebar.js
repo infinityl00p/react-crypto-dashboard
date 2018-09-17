@@ -7,16 +7,19 @@ class Sidebar extends Component {
     const SidebarItems = [{
       name: 'Current Rates',
       acronym: 'CR',
+      href: '/',
       active: true
     },
     {
       name: 'Hindsight Tool',
       acronym: 'HT',
+      href: '/hindsight',
       active: false
     },
     {
       name: 'Currency Conversion',
       acronym: 'CC',
+      href: '/conversion',
       active: false
     }];
 
@@ -28,12 +31,17 @@ class Sidebar extends Component {
         <ul className="sidebar-list">
             {
               SidebarItems.map((item, i) => {
+                const active = this.props.activeComponent === item.name ? true : false;
+                const { name, acronym, href } = item;
+
                 return (
                   <SidebarItem
                     key={i}
-                    name={item.name}
-                    acronym={item.acronym}
-                    active={item.active}
+                    onClick={this.props.handleClick}
+                    href={href}
+                    name={name}
+                    acronym={acronym}
+                    active={active}
                   />
                 );
               })

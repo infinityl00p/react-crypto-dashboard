@@ -1,39 +1,9 @@
-.coin-card .icon-container{
+.coin-card .icon-container {
   float: left;
   padding: 1.5rem;
   margin-top: -2rem;
   margin-left: 1.5rem;
   border-radius: 3px;
-}
-
-.coin-card .icon-container.BTC {
-  background: linear-gradient(60deg, #f7931a, #fb8c00);
-  box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
-}
-
-.coin-card .icon-container.BCH {
-  background: linear-gradient(60deg, #F59332,  rgb(255, 152, 49));
-  box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
-}
-
-.coin-card .icon-container.XRP {
-  background: linear-gradient(60deg, #00AAE4, #00AAE4);
-  box-shadow: 0 12px 20px -10px rgba(0, 171, 228, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 171, 228, 0.2);
-}
-
-.coin-card .icon-container.DAS {
-  background: linear-gradient(60deg, #012060, #012469);
-  box-shadow: 0 12px 20px -10px rgba(1, 32, 96, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(1, 32, 96, 0.2);
-}
-
-.coin-card .icon-container.ETH {
-  background: linear-gradient(60deg, #3C3C3D, #12100B);
-  box-shadow: 0 12px 20px -10px rgba(60, 60, 61, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(60, 60, 61, 0.2);
-}
-
-.coin-card .icon-container.LTC {
-  background: linear-gradient(60deg, #b8b8b8, #c0c0c0);
-  box-shadow: 0 12px 20px -10px rgba(184, 184, 184, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(184, 184, 184, 0.2);
 }
 
 .coin-card .icon-container img {
@@ -92,14 +62,38 @@
   color: #999999;
 }
 
-.price-change--right {
-  float: right;
+.price-change--right { float: right; }
+
+.price-change--right.positive { color: #66bb6a; }
+
+.price-change--right.negative { color: #ef5350; }
+
+.coin-card .icon-container.BTC {
+  background: linear-gradient(60deg, #f7931a, #fb8c00);
+  box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
 }
 
-.price-change--right.positive {
-  color: #66bb6a;
+.coin-card .icon-container.BCH {
+  background: linear-gradient(60deg, #F59332,  rgb(255, 152, 49));
+  box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
 }
 
-.price-change--right.negative {
-  color: #ef5350;
+.coin-card .icon-container.XRP {
+  background: linear-gradient(60deg, #00AAE4, #00AAE4);
+  box-shadow: 0 12px 20px -10px rgba(0, 171, 228, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 171, 228, 0.2);
+}
+
+.coin-card .icon-container.DAS {
+  background: linear-gradient(60deg, #012060, #012469);
+  box-shadow: 0 12px 20px -10px rgba(1, 32, 96, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(1, 32, 96, 0.2);
+}
+
+.coin-card .icon-container.ETH {
+  background: linear-gradient(60deg, #3C3C3D, #12100B);
+  box-shadow: 0 12px 20px -10px rgba(60, 60, 61, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(60, 60, 61, 0.2);
+}
+
+.coin-card .icon-container.LTC {
+  background: linear-gradient(60deg, #b8b8b8, #c0c0c0);
+  box-shadow: 0 12px 20px -10px rgba(184, 184, 184, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(184, 184, 184, 0.2);
 }

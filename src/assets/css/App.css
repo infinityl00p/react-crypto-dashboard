@@ -10,4 +10,12 @@ main {
   float: right;
   height: 100%;
   width: calc(100% - 24rem);
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 860px) {
+  main {
+    float: none;
+    width: 100%;
+  }
 }
