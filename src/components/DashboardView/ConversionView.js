@@ -5,6 +5,8 @@ class ConversionView extends Component {
     return (
       <div className="conversion-view">
         <h2>Conversion View</h2>
+        <div className="view-container">
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CryptoCard from './CryptoCard';
+import Card from '../Reusable/Card';
+import CardIcon from '../Reusable/CardIcon';
 import BCH from '../../../node_modules/cryptocurrency-icons/svg/white/bch.svg';
 import BTC from '../../../node_modules/cryptocurrency-icons/svg/white/btc.svg';
 import DAS from '../../../node_modules/cryptocurrency-icons/svg/white/dash.svg';
@@ -60,15 +61,16 @@ class CurrentCoinContainer extends Component {
 
 
   render() {
-    const iconContainerClass = `${this.props.coin.base} icon-container`;
     const percentageChange = this.getPercentageObject(this.props.coin, this.props.yesterdayCoin);
     const percentageClass = `price-change price-change--right ${percentageChange.integerType}`
 
     return (
-      <CryptoCard>
-        <div className={iconContainerClass}>
+      <Card>
+        <CardIcon
+          iconClass={this.props.coin.base}
+        >
           <img src={this.getImageSrc(this.props.coin.base)} alt={this.props.coin.base} />
-        </div>
+        </CardIcon>
         <div className="text-container">
           <h3>{this.getCoinName(this.props.coin.base)}</h3>
           <p>${this.props.coin.rate} USD</p>
@@ -77,7 +79,7 @@ class CurrentCoinContainer extends Component {
           <p className="price-change price-change--left">24 Hour Change</p>
           <p className={percentageClass}>{percentageChange.percentage}%</p>
         </div>
-      </CryptoCard>
+      </Card>
     );
   }
 }

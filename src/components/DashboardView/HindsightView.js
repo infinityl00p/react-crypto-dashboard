@@ -5,6 +5,8 @@ class HindsightView extends Component {
     return (
       <div className="hindsight-view">
         <h2>Hindsight View</h2>
+        <div className="view-container">
+        </div>
       </div>
     );
   }

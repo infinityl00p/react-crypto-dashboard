@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CurrentCoinContainer from './CurrentCoinContainer';
-import '../../assets/css/CurrentCoinView.css';
 
 class CurrentCoinView extends Component {
   constructor() {
@@ -73,7 +72,10 @@ class CurrentCoinView extends Component {
 
     return (
       <div className="current-coin-view">
-        { this.renderCoins(mostRecentCoins, yesterdaysCoins) }
+        <h2>Current Rates</h2>
+        <div className="view-container">
+          { this.renderCoins(mostRecentCoins, yesterdaysCoins) }
+        </div>
       </div>
     );
   }
