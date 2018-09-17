@@ -1,0 +1,32 @@
+.sidebar-item {
+  display:block;
+}
+
+.sidebar-item a {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 1rem 1.5rem 0;
+  padding: 1rem;
+  display: block;
+  position: relative;
+  font-weight: 300;
+  font-size: 1.4rem;
+  border-radius: 3px;
+}
+
+.sidebar-item .acronym {
+  padding-right: 2rem;
+}
+
+.sidebar-item a {
+  transition: 300ms ease;
+  z-index: 2;
+}
+
+.sidebar-item .active {
+  background-color: #00AAE4;
+}
+
+.sidebar-item a:hover {
+  cursor: pointer;
+  background-color: #00AAE4;
+}
