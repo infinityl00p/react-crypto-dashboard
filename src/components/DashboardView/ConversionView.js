@@ -4,7 +4,7 @@ class ConversionView extends Component {
   render() {
     return (
       <div className="conversion-view">
-        <h2>Conversion View</h2>
+        <h2>Currency Conversion</h2>
         <div className="view-container">
         </div>
       </div>

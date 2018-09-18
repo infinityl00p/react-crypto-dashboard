@@ -24,10 +24,33 @@ app.get('/api/coins', (req, res) => {
   });
 })
 
+app.get('/api/hindsight', (req,res) => {
+  const base = 'BTC';
+  const quote = 'USD';
+  const time = '2012-01-01T00:00:00Z';
+
+  axios.get(`https://rest.coinapi.io/v1/exchangerate/${base}/${quote}?time=${time}&apikey=${keys.coin_api}`)
+    .then((response) => {
+      return res.send(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+      return res.send(error);
+    })
+});
+
 // Get the exchange rate between a real currency and a cryptocurrency
 app.get('/api/exchangerate', (req, res) => {
-  const crypto = req.query.crypto;
-  const currency = req.query.currency;
+  const base = req.query.base;
+
+  axios.get(`https://rest.coinapi.io/v1/exchangerate/${base}?apikey=${keys.coin_api}`)
+  .then((response) => {
+    return res.send(response.data);
+  })
+  .catch((error) => {
+    console.log(error);
+    return res.send(error);
+  })
 });
 
 app.get('/api/coins/historical', (req, res) => {
@@ -40,7 +63,8 @@ app.get('/api/coins/historical', (req, res) => {
       return res.send(response.data);
     })
     .catch((error) => {
-      //console.log(error);
+      console.log(error);
+      return res.send(error);
     })
 });
 

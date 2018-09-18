@@ -11,7 +11,7 @@ class Sidebar extends Component {
       active: true
     },
     {
-      name: 'Hindsight Tool',
+      name: 'BTC Hindsight Tool',
       acronym: 'HT',
       href: '/hindsight',
       active: false
