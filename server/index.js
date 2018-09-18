@@ -24,13 +24,28 @@ app.get('/api/coins', (req, res) => {
   });
 })
 
+app.get('/api/bitcoin', (req, res) => {
+  axios.get(`https://rest.coinapi.io/v1/exchangerate/BTC/USD?apikey=${keys.coin_api}`)
+    .then((response) => {
+      const { rate } = response.data;
+
+      return res.send(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+      return res.send(error);
+    })
+})
+
 app.get('/api/hindsight', (req,res) => {
   const base = 'BTC';
   const quote = 'USD';
-  const time = '2012-01-01T00:00:00Z';
+  const time = req.query.time;
 
   axios.get(`https://rest.coinapi.io/v1/exchangerate/${base}/${quote}?time=${time}&apikey=${keys.coin_api}`)
     .then((response) => {
+      const { rate } = response.data;
+
       return res.send(response.data);
     })
     .catch((error) => {

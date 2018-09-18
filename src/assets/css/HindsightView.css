@@ -1,0 +1,18 @@
+.hindsight-view .MuiInputLabel-animated-9 { font-size: 1.6rem; }
+
+.hindsight-view .MuiInputBase-inputType-45 {
+  height: auto;
+  font-size: 1.4rem;
+}
+
+.hindsight-view .error-message {
+  color: red;
+  position: absolute;
+  bottom: -3rem;
+}
+
+.hindsight-view .card-container{
+  max-width: 40%;
+  flex-basis: 40%;
+  margin: 0 auto;
+}

@@ -14,7 +14,6 @@ class App extends Component {
 
     this.state = { activeComponent }
   }
-  state = { activeComponent: 'Current Rates'}
 
   getActiveComponent = () => {
     switch(window.location.pathname) {
