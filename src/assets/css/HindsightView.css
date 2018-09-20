@@ -2,8 +2,11 @@
 
 .hindsight-view .MuiInputBase-inputType-45 {
   height: auto;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
+
+.MuiInputBase-inputType-47, .MuiInputBase-input-44 { text-align: center; }
+
 
 .hindsight-view .error-message {
   color: red;
@@ -11,8 +14,25 @@
   bottom: -3rem;
 }
 
-.hindsight-view .card-container{
-  max-width: 40%;
-  flex-basis: 40%;
-  margin: 0 auto;
+.results {
+  font-size: 1.5rem;
+  font-weight: 200;
+  padding-top: 3rem;
+}
+
+.important {
+  font-weight: 600;
+}
+
+.extra-important {
+  font-weight: 900;
+  font-size: 1.8rem;
+}
+
+@media only screen and  (max-width: 10px) {
+  .hindsight-view .card-container {
+    max-width: 25%;
+    flex-basis: 25%;
+    margin: 0 auto;
+  }
 }

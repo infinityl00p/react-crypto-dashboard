@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import '../../assets/css/Card.css';
 
-class CryptoCard extends Component {
+class Card extends Component {
   render() {
+    const className = this.props.disabled ? "card-container disabled" : "card-container";
+
     return (
-      <div className="card-container">
+      <div className={className} disabled={this.props.disabled}>
         <div className="card">
           {this.props.children}
         </div>
@@ -13,4 +15,4 @@ class CryptoCard extends Component {
   }
 }
 
-export default CryptoCard;
+export default Card;

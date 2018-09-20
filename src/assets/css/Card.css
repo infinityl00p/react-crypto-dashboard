@@ -2,9 +2,24 @@
   position: relative;
   padding: 0 1.5rem;
   flex-grow: 0;
-  max-width: 33.33333%;
-  flex-basis: 33.33333%;
+  max-width: 25%;
+  flex-basis: 25%;
 }
+
+.card-container.disabled .card {
+  background-color: #ddd;
+  color: #999;
+}
+
+.card-container.disabled .card-icon {
+  background: #ccc;
+}
+
+.card-container.disabled .MuiInputLabel-animated-11, .card-container.disabled .MuiInputBase-input-44 {
+  color: #999;
+}
+
+.card-container.disabled .MuiInput-underline-25:after { border-bottom: 2px solid #999; }
 
 .card {
   position: relative;
@@ -25,6 +40,14 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+@media only screen and  (max-width: 1400px) {
+  .card-container {
+    max-width: 33.33%;
+    flex-basis: 33.33%;
+  }
+}
+
 
 @media only screen and  (max-width: 1160px) {
   .card-container {
