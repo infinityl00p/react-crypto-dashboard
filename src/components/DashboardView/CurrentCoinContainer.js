@@ -50,6 +50,10 @@ class CurrentCoinContainer extends Component {
   }
 
   getPercentage = (coin, yesterdayCoin) => {
+    if (coin.rate === 0 || yesterdayCoin.rate === 0) {
+      return 0;
+    }
+
     if (coin.rate > yesterdayCoin.rate) {
       return ((coin.rate / yesterdayCoin.rate) - 1).toFixed(5);
     } else if (yesterdayCoin.rate > coin.rate) {
