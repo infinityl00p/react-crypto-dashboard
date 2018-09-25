@@ -7,6 +7,12 @@
 
 .MuiInputBase-inputType-47, .MuiInputBase-input-44 { text-align: center; }
 
+.view-container label {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.view-container input { font-size: 1.5rem; }
 
 .hindsight-view .error-message {
   color: red;
@@ -20,9 +26,7 @@
   padding-top: 3rem;
 }
 
-.important {
-  font-weight: 600;
-}
+.important { font-weight: 600; }
 
 .extra-important {
   font-weight: 900;

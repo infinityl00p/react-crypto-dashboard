@@ -87,6 +87,14 @@ class HindsightView extends Component {
   }
 
   renderAmountForm = () => {
+    let disabled = false;
+
+    if (this.state.currentStep === 1) {
+      disabled = true;
+    }
+
+    console.log(disabled);
+
     return (
       <TextField
         id="Amount"
@@ -94,6 +102,7 @@ class HindsightView extends Component {
         value={this.state.step2.amount}
         onChange={this.handleInputChange}
         margin="normal"
+        disabled={disabled}
       />
     );
   }
